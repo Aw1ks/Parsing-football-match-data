@@ -1,9 +1,12 @@
-import pandas as pd
+import time
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
+
+import pandas as pd
+from terminaltables import SingleTable
 
 
 custom_optioms = Options()
@@ -11,8 +14,11 @@ custom_optioms.add_argument("--start-maximized")
 driver = webdriver.Chrome(options=custom_optioms)
 link = 'https://www.flashscore.com.ua/.'
 driver.get(link)
+time.sleep(60)
+
 
 driver_m = driver.find_elements(By.CLASS_NAME, 'event__match.event__match--twoLine')
+dict_drivers = []
 
 table = [
     ['stat', 't1', 't2', 'g1', 'g2']
